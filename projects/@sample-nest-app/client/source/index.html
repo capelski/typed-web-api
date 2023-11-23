@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+  </head>
+
+  <body>
+    <div>
+      <div>
+        <p>
+          <span>City: </span>
+          <input id="city-name" type="text" value="Brussels" />
+        </p>
+        <p id="error-message" style="color: red"></p>
+
+        <br />
+
+        <p>
+          <span>/api:</span>&nbsp;
+          <button id="api-query" type="button">GET Query string</button>&nbsp;
+          <button id="api-params" type="button">GET URL parameter</button>&nbsp;
+          <button id="api-json-body" type="button">POST JSON body</button>
+        </p>
+
+        <p>
+          <span>/api/v2:</span>&nbsp;
+          <button id="api-v2-query" type="button">GET Query string</button>&nbsp;
+          <button id="api-v2-params" type="button">GET URL parameter</button>&nbsp;
+          <button id="api-v2-json-body" type="button">POST JSON body</button>
+        </p>
+
+        <br />
+
+        <p><b>Request url</b>: <span id="request-url">-</span></p>
+        <p><b>Request body</b>: <span id="request-body">-</span></p>
+
+        <br />
+
+        <div>
+          <p><b>Response</b></p>
+          <p>
+            <img id="icon" style="height: 100px; width: 100px" />
+          </p>
+          <p>
+            Temperature: <span id="temperature">-</span> ºC (min:
+            <span id="min-temperature">-</span>ºC / max: <span id="max-temperature">-</span>ºC)
+          </p>
+          <p>Wind speed: <span id="wind-speed">-</span> km/h</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

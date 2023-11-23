@@ -1,0 +1,28 @@
+{
+  "author": "Carles Capellas <capellas.carles@gmail.com>",
+  "dependencies": {
+    "@typed-web-api/common": "^1.0.0",
+    "@types/express": "^4.17.21"
+  },
+  "description": "express specific functionality for the @typed-web-api library",
+  "license": "ISC",
+  "main": "distribution/index.js",
+  "name": "@typed-web-api/express-server",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capelski/typed-api.git"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc -p ./tsconfig.server.json",
+    "clean": "rm -rf distribution",
+    "dev": "tsc -p ./tsconfig.server.json --watch",
+    "prepack": "npm run build",
+    "test": "cucumber-js --require-module ts-node/register --require source/**/*.step.ts source/**/*.feature"
+  },
+  "types": "distribution/index.d.ts",
+  "version": "1.0.0"
+}

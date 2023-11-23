@@ -1,0 +1,23 @@
+{
+  "author": "Carles Capellas <capellas.carles@gmail.com>",
+  "description": "Common code for @typed-web-api client and server libraries",
+  "license": "ISC",
+  "main": "distribution/index.js",
+  "name": "@typed-web-api/common",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capelski/typed-web-api.git"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc -p ./tsconfig.common.json",
+    "clean": "rm -rf distribution",
+    "dev": "tsc -p ./tsconfig.common.json --watch",
+    "prepack": "npm run build"
+  },
+  "types": "distribution/index.d.ts",
+  "version": "1.0.0"
+}

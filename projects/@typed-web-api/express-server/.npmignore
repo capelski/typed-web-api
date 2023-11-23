@@ -1,0 +1,6 @@
+!distribution/
+node_modules/
+source/
+tsconfig.*
+*.tgz
+_test_

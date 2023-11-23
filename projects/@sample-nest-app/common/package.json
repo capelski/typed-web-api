@@ -1,0 +1,19 @@
+{
+  "author": "Carles Capellas <capellas.carles@gmail.com>",
+  "dependencies": {
+    "@typed-web-api/common": "^1.0.0"
+  },
+  "description": "Common code for @typed-web-api client/server usage example in NestJS projects",
+  "license": "ISC",
+  "main": "distribution/index.js",
+  "name": "@sample-nest-app/common",
+  "private": true,
+  "scripts": {
+    "build": "npm run clean && tsc -p ./tsconfig.common.json",
+    "build:check": "tsc -p ./tsconfig.common.json --noEmit",
+    "clean": "rm -rf distribution",
+    "dev": "tsc -p ./tsconfig.common.json --watch"
+  },
+  "types": "distribution/index.d.ts",
+  "version": "1.0.0"
+}
