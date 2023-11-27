@@ -64,6 +64,7 @@
     "test": "npm run test:lib",
     "test:lib": "npm run test:lib:client && npm run test:lib:express && npm run test:lib:nest",
     "test:lib:client": "npm run test -w @typed-web-api/client",
+    "test:lib:common": "npm run test -w @typed-web-api/common",
     "test:lib:express": "npm run test -w @typed-web-api/express-server",
     "test:lib:nest": "npm run test -w @typed-web-api/nestjs-server"
   },

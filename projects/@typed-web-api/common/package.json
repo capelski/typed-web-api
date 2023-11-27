@@ -4,9 +4,7 @@
   "devDependencies": {
     "@cucumber/cucumber": "^10.0.1",
     "@types/chai": "^4.3.11",
-    "@types/sinon": "^17.0.2",
     "chai": "^4.3.10",
-    "sinon": "^17.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.3.2"
   },
@@ -26,7 +24,8 @@
     "clean": "rm -rf distribution",
     "clean-modules": "rm -rf node_modules",
     "dev": "tsc -p ./tsconfig.common.json --watch",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "test": "cucumber-js --require-module ts-node/register --require source/**/*.step.ts source/**/*.feature"
   },
   "types": "distribution/index.d.ts",
   "version": "1.0.0"
