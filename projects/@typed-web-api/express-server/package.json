@@ -5,6 +5,15 @@
     "@types/express": "^4.17.21"
   },
   "description": "express specific functionality for the @typed-web-api library",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.1",
+    "@types/chai": "^4.3.11",
+    "@types/sinon": "^17.0.2",
+    "chai": "^4.3.10",
+    "sinon": "^17.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  },
   "license": "ISC",
   "main": "distribution/index.js",
   "name": "@typed-web-api/express-server",
@@ -14,11 +23,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/capelski/typed-api.git"
+    "url": "https://github.com/capelski/typed-web-api.git"
   },
   "scripts": {
     "build": "npm run clean && tsc -p ./tsconfig.server.json",
     "clean": "rm -rf distribution",
+    "clean-modules": "rm -rf node_modules",
     "dev": "tsc -p ./tsconfig.server.json --watch",
     "prepack": "npm run build",
     "test": "cucumber-js --require-module ts-node/register --require source/**/*.step.ts source/**/*.feature"

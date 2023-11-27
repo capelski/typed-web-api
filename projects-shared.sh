@@ -1,6 +1,7 @@
 allFiles=(
   "package-lock.json"
   "projects/@typed-web-api/client/package.json"
+  "projects/@typed-web-api/common/package.json"
   "projects/@typed-web-api/express-server/package.json"
   "projects/@typed-web-api/nestjs-server/package.json"
   "projects/@sample-express-app/client/package.json"
@@ -31,13 +32,28 @@ discardDiff() {
 installDependency() {
   dependencyMode=$1;
   echo "Installing $2 ($dependencyMode dependency) in $3..."
-  [[ $dependencyMode == 'local' ]] && dependencyTarget="./projects/$2" || dependencyTarget=$2
 
-  npm i -S $dependencyTarget -w $3
+  if [[ $dependencyMode == 'local' ]]; then
+    npm i -S ./projects/$2 -w $3
+  else
+    cd ./projects/$3
+    npm i -S $2@latest --workspaces=false
+    rm -rf package-lock.json
+    cd ../../..
+  fi
 }
 
 installDependencies() {
   checkDiff
+
+  npm run clean-modules;
+
+  if [[ $1 == 'public' ]]; then
+    cd ./projects/@typed-web-api/common
+    npm i --workspaces=false
+    rm -rf package-lock.json
+    cd ../../..
+  fi
 
   installDependency $1 @typed-web-api/common @typed-web-api/client
   installDependency $1 @typed-web-api/common @typed-web-api/express-server
@@ -52,7 +68,11 @@ installDependencies() {
   installDependency $1 @typed-web-api/nestjs-server @sample-nest-app/server
 
   echo "Reinstalling dependencies at root folder..."
-  npm i
+  if [[ $1 == 'public' ]]; then
+    npm i --workspaces=false
+  else
+    npm i
+  fi
 
   echo "Discarding generated workspace changes..."
   discardDiff

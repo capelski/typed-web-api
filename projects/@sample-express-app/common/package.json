@@ -4,6 +4,9 @@
     "@typed-web-api/common": "^1.0.0"
   },
   "description": "Common code for @typed-web-api client/server usage samples",
+  "devDependencies": {
+    "typescript": "^5.3.2"
+  },
   "license": "ISC",
   "main": "distribution/index.js",
   "name": "@sample-express-app/common",
@@ -12,6 +15,7 @@
     "build": "npm run clean && tsc -p ./tsconfig.common.json",
     "build:check": "tsc -p ./tsconfig.common.json --noEmit",
     "clean": "rm -rf distribution",
+    "clean-modules": "rm -rf node_modules",
     "dev": "tsc -p ./tsconfig.common.json --watch"
   },
   "types": "distribution/index.d.ts",

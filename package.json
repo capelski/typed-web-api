@@ -2,15 +2,8 @@
   "author": "Carles Capellas <capellas.carles@gmail.com>",
   "description": "@typed-web-api monorepo",
   "devDependencies": {
-    "@cucumber/cucumber": "^10.0.1",
-    "@types/chai": "^4.3.10",
-    "@types/sinon": "^17.0.1",
-    "chai": "^4.3.10",
     "concurrently": "^8.2.2",
-    "prettier": "^3.1.0",
-    "sinon": "^17.0.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.3.2"
+    "prettier": "^3.1.0"
   },
   "license": "ISC",
   "name": "typed-web-api",
@@ -48,7 +41,7 @@
     "clean:nest:client": "npm run clean -w @sample-nest-app/client",
     "clean:nest:common": "npm run clean -w @sample-nest-app/common",
     "clean:nest:server": "npm run clean -w @sample-nest-app/server",
-    "clean-modules": "rm -rf node_modules",
+    "clean-modules": "npm run clean-modules -ws; rm -rf node_modules",
     "dev": "npm run build:lib && concurrently --kill-others 'npm run dev:lib' 'sleep 5; npm run dev:express' 'sleep 5; npm run dev:nest'",
     "dev:lib": "npm run build:lib:common && concurrently --kill-others 'npm run dev:lib:client' 'npm run dev:lib:common' 'npm run dev:lib:express' 'npm run dev:lib:nest'",
     "dev:lib:client": "npm run dev -w @typed-web-api/client",

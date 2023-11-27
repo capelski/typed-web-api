@@ -1,6 +1,15 @@
 {
   "author": "Carles Capellas <capellas.carles@gmail.com>",
   "description": "Common code for @typed-web-api client and server libraries",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.1",
+    "@types/chai": "^4.3.11",
+    "@types/sinon": "^17.0.2",
+    "chai": "^4.3.10",
+    "sinon": "^17.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+  },
   "license": "ISC",
   "main": "distribution/index.js",
   "name": "@typed-web-api/common",
@@ -15,6 +24,7 @@
   "scripts": {
     "build": "npm run clean && tsc -p ./tsconfig.common.json",
     "clean": "rm -rf distribution",
+    "clean-modules": "rm -rf node_modules",
     "dev": "tsc -p ./tsconfig.common.json --watch",
     "prepack": "npm run build"
   },
