@@ -1,6 +1,6 @@
 import { Before, Given, Then, When } from '@cucumber/cucumber';
 import { expect } from 'chai';
-import { HttpMethods, PathMethod, splitPathMethod } from '../path-method';
+import { HttpMethods, PathMethod, splitPathMethod } from './path-method';
 
 let error: any;
 let inputString: string | undefined;
