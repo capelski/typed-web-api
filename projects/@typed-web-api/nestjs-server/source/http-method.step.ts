@@ -2,7 +2,7 @@ import { After, Before, Given, Then } from '@cucumber/cucumber';
 import { Delete, Get } from '@nestjs/common';
 import { expect } from 'chai';
 import sinon, { SinonSpy } from 'sinon';
-import { HttpMethodCore } from '../http-method-core';
+import { HttpMethodCore } from './http-method-core';
 
 let error: undefined | Error;
 let stubs:

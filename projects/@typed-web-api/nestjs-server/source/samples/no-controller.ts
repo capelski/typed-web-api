@@ -1,4 +1,4 @@
-import { HttpMethod } from '../../http-method';
+import { HttpMethod } from '../http-method';
 
 export function controllerFactory(httpMethod: typeof HttpMethod) {
   class NoController {
