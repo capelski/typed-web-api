@@ -3,4 +3,5 @@ node_modules/
 source/
 tsconfig.*
 *.tgz
-_test_
+*.feature
+*.step.ts

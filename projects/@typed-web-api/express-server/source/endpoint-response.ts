@@ -1,6 +1,4 @@
-export class EndpointResponse<T> {
-  constructor(
-    public payload: T,
-    public status?: number,
-  ) {}
-}
+export type EndpointResponse<T> = {
+  payload: T;
+  status?: number;
+};
