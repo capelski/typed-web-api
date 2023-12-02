@@ -1,6 +1,6 @@
 import { Before, Given, Then, When } from '@cucumber/cucumber';
+import { Dictionary, HttpMethods } from '@typed-web-api/common';
 import { expect } from 'chai';
-import { Dictionary, HttpMethods } from '../distribution';
 import { buildRequestInit, BuildRequestInitOptions } from './build-request-init';
 
 let options: BuildRequestInitOptions;
