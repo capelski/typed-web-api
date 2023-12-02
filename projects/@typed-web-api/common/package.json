@@ -5,6 +5,7 @@
     "@cucumber/cucumber": "^10.0.1",
     "@types/chai": "^4.3.11",
     "chai": "^4.3.10",
+    "nyc": "^15.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.3.2"
   },
@@ -25,7 +26,8 @@
     "clean-modules": "rm -rf node_modules",
     "dev": "tsc -p ./tsconfig.common.json --watch",
     "prepack": "npm run build",
-    "test": "cucumber-js --require-module ts-node/register --require source/**/*.step.ts source/**/*.feature"
+    "test": "cucumber-js --require-module ts-node/register --require source/**/*.step.ts source/**/*.feature",
+    "test-coverage": "rm -rf ../../../coverage/common; nyc --reporter html npm test; mv coverage ../../../coverage/common; open -a Google\\ Chrome ../../../coverage/common/index.html"
   },
   "types": "distribution/index.d.ts",
   "version": "1.0.0"
