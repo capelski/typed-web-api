@@ -6,5 +6,5 @@ export type EndpointDefinition<TResponse, TRequest extends RequestPayload = {}> 
 };
 
 export type ApiDefinition = {
-  [path_method: string]: EndpointDefinition<any>;
+  [endpointName: string]: EndpointDefinition<any>;
 };

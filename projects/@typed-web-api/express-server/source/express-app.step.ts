@@ -2,10 +2,10 @@ import { After, Before, Given } from '@cucumber/cucumber';
 import express, { Express } from 'express';
 import sinon, { SinonStubbedInstance } from 'sinon';
 
-export const appStub: { value: undefined | SinonStubbedInstance<Express> } = { value: undefined };
+export const appStub: { value: SinonStubbedInstance<Express> } = { value: undefined! };
 
 Before(() => {
-  appStub.value = undefined;
+  appStub.value = undefined!;
 });
 
 Given('an express app', () => {

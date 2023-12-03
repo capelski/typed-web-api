@@ -1,5 +1,5 @@
 import { Delete, Get, Patch, Post, Put } from '@nestjs/common';
-import { splitPathMethod } from '@typed-web-api/common';
+import { isValidMethod, splitEndpointName } from '@typed-web-api/common';
 
 // Internal function meant for testing purposes
 export const HttpMethodCore =
@@ -12,7 +12,14 @@ export const HttpMethodCore =
   }) =>
   () => {
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-      const { method, path } = splitPathMethod(propertyKey);
+      const { method, path } = splitEndpointName(propertyKey);
+
+      if (!isValidMethod(method)) {
+        throw new Error(
+          `Invalid endpoint name "${propertyKey}". Endpoint names must end with an underscore followed by an http method.` +
+            ' Examples: /users/_get or /users/:id_put.',
+        );
+      }
 
       const httpDecorator =
         method === 'delete'

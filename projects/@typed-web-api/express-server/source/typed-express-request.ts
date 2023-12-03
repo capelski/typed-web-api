@@ -10,11 +10,11 @@ import {
 } from '@typed-web-api/common';
 import { Request } from 'express';
 
-export type TypedExpressRequest<TApi extends ApiDefinition, TPath_Method extends keyof TApi> = Omit<
-  Omit<Omit<Request, 'body'>, 'params'>,
-  'query'
-> &
-  TApi[TPath_Method]['payload'] extends JsonBody_UrlParams_QueryString<
+export type TypedExpressRequest<
+  TApi extends ApiDefinition,
+  TEndpointName extends keyof TApi,
+> = Omit<Omit<Omit<Request, 'body'>, 'params'>, 'query'> &
+  TApi[TEndpointName]['payload'] extends JsonBody_UrlParams_QueryString<
   infer TBody,
   infer TParams,
   infer TQuery
@@ -24,37 +24,37 @@ export type TypedExpressRequest<TApi extends ApiDefinition, TPath_Method extends
       params: Partial<TParams>;
       query: Partial<TQuery>;
     }
-  : TApi[TPath_Method]['payload'] extends JsonBody_UrlParams<infer TBody, infer TParams>
+  : TApi[TEndpointName]['payload'] extends JsonBody_UrlParams<infer TBody, infer TParams>
     ? {
         body?: TBody;
         params: Partial<TParams>;
         query: Request['query'];
       }
-    : TApi[TPath_Method]['payload'] extends JsonBody_QueryString<infer TBody, infer TQuery>
+    : TApi[TEndpointName]['payload'] extends JsonBody_QueryString<infer TBody, infer TQuery>
       ? {
           body?: TBody;
           params: Request['params'];
           query: Partial<TQuery>;
         }
-      : TApi[TPath_Method]['payload'] extends UrlParams_QueryString<infer TParams, infer TQuery>
+      : TApi[TEndpointName]['payload'] extends UrlParams_QueryString<infer TParams, infer TQuery>
         ? {
             body: Request['body'];
             params: Partial<TParams>;
             query: Partial<TQuery>;
           }
-        : TApi[TPath_Method]['payload'] extends JsonBody<infer TBody>
+        : TApi[TEndpointName]['payload'] extends JsonBody<infer TBody>
           ? {
               body?: TBody;
               params: Request['params'];
               query: Request['query'];
             }
-          : TApi[TPath_Method]['payload'] extends UrlParams<infer TParams>
+          : TApi[TEndpointName]['payload'] extends UrlParams<infer TParams>
             ? {
                 body: Request['body'];
                 params: Partial<TParams>;
                 query: Request['query'];
               }
-            : TApi[TPath_Method]['payload'] extends QueryString<infer TQuery>
+            : TApi[TEndpointName]['payload'] extends QueryString<infer TQuery>
               ? {
                   body: Request['body'];
                   params: Request['params'];

@@ -5,5 +5,5 @@ import { EndpointResponse } from './endpoint-response';
 export type EndpointHandler<T> = (...args: Parameters<RequestHandler>) => EndpointResponse<T>;
 
 export type ServerEndpoints<TApi extends ApiDefinition> = {
-  [TPath_Method in keyof TApi]: EndpointHandler<TApi[TPath_Method]['response']>;
+  [TEndpointName in keyof TApi]: EndpointHandler<TApi[TEndpointName]['response']>;
 };

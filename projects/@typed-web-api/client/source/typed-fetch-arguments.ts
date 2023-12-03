@@ -13,14 +13,14 @@ export type NoMethodRequestInit = Omit<RequestInit, 'method'>;
 
 export type TypedFetchArguments<
   TApi extends ApiDefinition,
-  TPath_Method extends keyof TApi,
-> = TApi[TPath_Method]['payload'] extends JsonBody_UrlParams_QueryString<
+  TEndpointName extends keyof TApi,
+> = TApi[TEndpointName]['payload'] extends JsonBody_UrlParams_QueryString<
   infer TJsonBody,
   infer TUrlParams,
   infer TQueryString
 >
   ? [
-      path: TPath_Method,
+      path: TEndpointName,
       options: {
         jsonBody: TJsonBody;
         init?: NoMethodRequestInit;
@@ -29,9 +29,9 @@ export type TypedFetchArguments<
         urlPrefix?: string;
       },
     ]
-  : TApi[TPath_Method]['payload'] extends JsonBody_UrlParams<infer TJsonBody, infer TUrlParams>
+  : TApi[TEndpointName]['payload'] extends JsonBody_UrlParams<infer TJsonBody, infer TUrlParams>
     ? [
-        path: TPath_Method,
+        path: TEndpointName,
         options: {
           jsonBody: TJsonBody;
           init?: NoMethodRequestInit;
@@ -39,12 +39,12 @@ export type TypedFetchArguments<
           urlPrefix?: string;
         },
       ]
-    : TApi[TPath_Method]['payload'] extends JsonBody_QueryString<
+    : TApi[TEndpointName]['payload'] extends JsonBody_QueryString<
           infer TJsonBody,
           infer TQueryString
         >
       ? [
-          path: TPath_Method,
+          path: TEndpointName,
           options: {
             jsonBody: TJsonBody;
             init?: NoMethodRequestInit;
@@ -52,12 +52,12 @@ export type TypedFetchArguments<
             urlPrefix?: string;
           },
         ]
-      : TApi[TPath_Method]['payload'] extends UrlParams_QueryString<
+      : TApi[TEndpointName]['payload'] extends UrlParams_QueryString<
             infer TUrlParams,
             infer TQueryString
           >
         ? [
-            path: TPath_Method,
+            path: TEndpointName,
             options: {
               init?: NoMethodRequestInit;
               urlParams: TUrlParams;
@@ -65,27 +65,27 @@ export type TypedFetchArguments<
               urlPrefix?: string;
             },
           ]
-        : TApi[TPath_Method]['payload'] extends JsonBody<infer TJsonBody>
+        : TApi[TEndpointName]['payload'] extends JsonBody<infer TJsonBody>
           ? [
-              path: TPath_Method,
+              path: TEndpointName,
               options: {
                 jsonBody: TJsonBody;
                 init?: NoMethodRequestInit;
                 urlPrefix?: string;
               },
             ]
-          : TApi[TPath_Method]['payload'] extends UrlParams<infer TUrlParams>
+          : TApi[TEndpointName]['payload'] extends UrlParams<infer TUrlParams>
             ? [
-                path: TPath_Method,
+                path: TEndpointName,
                 options: {
                   init?: NoMethodRequestInit;
                   urlParams: TUrlParams;
                   urlPrefix?: string;
                 },
               ]
-            : TApi[TPath_Method]['payload'] extends QueryString<infer TQueryString>
+            : TApi[TEndpointName]['payload'] extends QueryString<infer TQueryString>
               ? [
-                  path: TPath_Method,
+                  path: TEndpointName,
                   options: {
                     init?: NoMethodRequestInit;
                     queryString: TQueryString;
@@ -93,7 +93,7 @@ export type TypedFetchArguments<
                   },
                 ]
               : [
-                  path: TPath_Method,
+                  path: TEndpointName,
                   options?: {
                     init?: NoMethodRequestInit;
                     urlPrefix?: string;

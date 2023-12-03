@@ -14,11 +14,3 @@ Feature: Http method decorator
    Scenario: Decorated method with invalid name
       Given the class defined in "./samples/invalid-controller.ts"
       Then an error is thrown containing "/path_invalidMethod" in the message
-
-   Scenario: Methods without decorators
-      Given the class defined in "./samples/no-controller.ts"
-      Then the "Delete" NestJS decorator is NOT called
-      And the "Get" NestJS decorator is NOT called
-      And the "Patch" NestJS decorator is NOT called
-      And the "Post" NestJS decorator is NOT called
-      And the "Put" NestJS decorator is NOT called

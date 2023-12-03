@@ -1,41 +1,32 @@
-import { Dictionary, splitPathMethod } from '@typed-web-api/common';
+import { isValidMethod, splitEndpointName } from '@typed-web-api/common';
 import { IRouter } from 'express';
 import { exposeEndpointHandler } from './expose-endpoint-handler';
 import { ServerEndpoints } from './server-endpoints';
 
-export type UseServerEndpointsOptions = {
-  /** Throw an error on invalid endpoint names. Defaults to false */
-  failOnInvalidNames?: boolean;
-};
-
 export type UseServerEndpointsResult = {
-  failedEndpoints: Dictionary<string>;
-  successfulEndpoints: string[];
+  exposedEndpoints: string[];
+  failedEndpoints: string[];
 };
 
 export function useServerEndpoints<T extends ServerEndpoints<any>>(
-  app: IRouter,
+  iRouter: IRouter,
   endpoints: T,
-  { failOnInvalidNames }: UseServerEndpointsOptions = {},
 ): UseServerEndpointsResult {
   const result: UseServerEndpointsResult = {
-    failedEndpoints: {},
-    successfulEndpoints: [],
+    exposedEndpoints: [],
+    failedEndpoints: [],
   };
 
   Object.keys(endpoints).forEach((endpointName) => {
-    try {
-      const { path, method } = splitPathMethod(endpointName);
-      exposeEndpointHandler(app, method, path, endpoints[endpointName]);
-      result.successfulEndpoints.push(endpointName);
-    } catch (error) {
-      result.failedEndpoints[endpointName] = (error as Error).message;
+    const { path, method } = splitEndpointName(endpointName);
+
+    if (isValidMethod(method)) {
+      exposeEndpointHandler(iRouter, method, path, endpoints[endpointName]);
+      result.exposedEndpoints.push(endpointName);
+    } else {
+      result.failedEndpoints.push(endpointName);
     }
   });
-
-  if (failOnInvalidNames && Object.keys(result.failedEndpoints).length > 0) {
-    throw new Error(Object.values(result.failedEndpoints).join('\n'));
-  }
 
   return result;
 }
