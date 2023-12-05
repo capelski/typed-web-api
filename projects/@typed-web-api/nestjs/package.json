@@ -17,7 +17,7 @@
   },
   "license": "ISC",
   "main": "distribution/index.js",
-  "name": "@typed-web-api/nestjs-server",
+  "name": "@typed-web-api/nestjs",
   "private": false,
   "publishConfig": {
     "access": "public"

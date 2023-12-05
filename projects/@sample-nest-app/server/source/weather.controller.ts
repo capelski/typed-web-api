@@ -1,6 +1,6 @@
 import { Body, Controller, Param, Query } from '@nestjs/common';
 import { WeatherEndpoints } from '@sample-nest-app/common';
-import { HttpMethod, ServerEndpoints } from '@typed-web-api/nestjs-server';
+import { HttpMethod, ServerEndpoints } from '@typed-web-api/nestjs';
 import { AppService } from './app.service';
 import { sampleEndpointCore } from './sample-endpoint-core';
 

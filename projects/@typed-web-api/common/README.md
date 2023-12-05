@@ -1,6 +1,6 @@
 # @typed-web-api/common
 
-Base types to generate an opinionated type declaration for a nodeJS web API. Such type declaration can later be used in both client (`@typed-web-api/client`) and server (`@typed-web-api/express` or `@typed-web-api/nestjs-server`) sides to validate the payload and response of Http requests.
+Base types to generate an opinionated type declaration for a nodeJS web API. Such type declaration can later be used in both client (`@typed-web-api/client`) and server (`@typed-web-api/express` or `@typed-web-api/nestjs`) sides to validate the payload and response of Http requests.
 
 ## Example
 

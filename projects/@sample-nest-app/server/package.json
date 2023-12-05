@@ -5,11 +5,11 @@
     "@nestjs/core": "^10.2.10",
     "@nestjs/platform-express": "^10.2.10",
     "@sample-nest-app/common": "file:../common",
-    "@typed-web-api/nestjs-server": "^1.0.0",
+    "@typed-web-api/nestjs": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
   },
-  "description": "Example usage of @typed-web-api/nestjs-server",
+  "description": "Example usage of @typed-web-api/nestjs",
   "devDependencies": {
     "@nestjs/cli": "^10.2.1",
     "@nestjs/schematics": "^10.0.3",

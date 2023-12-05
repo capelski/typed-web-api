@@ -4,7 +4,7 @@
       "@typed-web-api/client": ["./projects/@typed-web-api/client/source"],
       "@typed-web-api/common": ["./projects/@typed-web-api/common/source"],
       "@typed-web-api/express": ["./projects/@typed-web-api/express/source"],
-      "@typed-web-api/nestjs-server": ["./projects/@typed-web-api/nestjs-server/source"],
+      "@typed-web-api/nestjs": ["./projects/@typed-web-api/nestjs/source"],
       "@sample-express-app/common": ["./projects/@sample-express-app/common/source"],
       "@sample-nest-app/common": ["./projects/@sample-nest-app/common/source"]
     }

@@ -1,4 +1,4 @@
-# @typed-web-api/nestjs-server
+# @typed-web-api/nestjs
 
 Server library to validate the return type of a NestJS web API's endpoints, based on a type declaration generated via `@typed-web-api/common`.
 
@@ -35,7 +35,7 @@ This is how to validate the endpoints' return type by using `ServerEndpoints` (g
 
 ```typescript
 import { Controller } from '@nestjs/common';
-import { HttpMethod, ServerEndpoints } from '@typed-web-api/nestjs-server';
+import { HttpMethod, ServerEndpoints } from '@typed-web-api/nestjs';
 import { WebApiTypes } from '...';
 
 @Controller()

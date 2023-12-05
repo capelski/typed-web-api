@@ -17,7 +17,7 @@ npm version patch # patch, minor or major
 npm publish
 cd ../../..
 
-cd projects/@typed-web-api/nestjs-server 
+cd projects/@typed-web-api/nestjs 
 npm i -S @typed-web-api/common@latest
 npm version patch # patch, minor or major
 npm publish
@@ -44,7 +44,7 @@ npm i -S @typed-web-api/client@latest
 cd ../../..
 
 cd projects/@sample-nest-app/server 
-npm i -S @typed-web-api/nestjs-server@latest
+npm i -S @typed-web-api/nestjs@latest
 cd ../../..
 
 npm i # Necessary to adjust package-lock.json after installs

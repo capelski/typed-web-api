@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@typed-web-api/nestjs-server": ["../../@typed-web-api/nestjs-server/source"],
+      "@typed-web-api/nestjs": ["../../@typed-web-api/nestjs/source"],
       "@sample-nest-app/common": ["../common/source"]
     }
   },
