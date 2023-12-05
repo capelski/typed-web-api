@@ -1,5 +1,5 @@
 import { PartialPathEndpoints } from '@sample-express-app/common';
-import { ServerEndpoints, TypedExpressRequest } from '@typed-web-api/express-server';
+import { ServerEndpoints, TypedExpressRequest } from '@typed-web-api/express';
 import { sampleEndpointCore } from './sample-endpoint-core';
 
 export const partialPathsController: ServerEndpoints<PartialPathEndpoints> = {

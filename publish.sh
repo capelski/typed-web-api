@@ -11,7 +11,7 @@ npm version patch # patch, minor or major
 npm publish
 cd ../../..
 
-cd projects/@typed-web-api/express-server 
+cd projects/@typed-web-api/express 
 npm i -S @typed-web-api/common@latest
 npm version patch # patch, minor or major
 npm publish
@@ -32,7 +32,7 @@ npm i -S @typed-web-api/client@latest
 cd ../../..
 
 cd projects/@sample-express-app/server 
-npm i -S @typed-web-api/express-server@latest
+npm i -S @typed-web-api/express@latest
 cd ../../..
 
 cd projects/@sample-nest-app/common 

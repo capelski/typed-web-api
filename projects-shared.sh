@@ -2,7 +2,7 @@ allFiles=(
   "package-lock.json"
   "projects/@typed-web-api/client/package.json"
   "projects/@typed-web-api/common/package.json"
-  "projects/@typed-web-api/express-server/package.json"
+  "projects/@typed-web-api/express/package.json"
   "projects/@typed-web-api/nestjs-server/package.json"
   "projects/@sample-express-app/client/package.json"
   "projects/@sample-express-app/common/package.json"
@@ -56,12 +56,12 @@ installDependencies() {
   fi
 
   installDependency $1 @typed-web-api/common @typed-web-api/client
-  installDependency $1 @typed-web-api/common @typed-web-api/express-server
+  installDependency $1 @typed-web-api/common @typed-web-api/express
   installDependency $1 @typed-web-api/common @typed-web-api/nestjs-server
 
   installDependency $1 @typed-web-api/common @sample-express-app/common
   installDependency $1 @typed-web-api/client @sample-express-app/client
-  installDependency $1 @typed-web-api/express-server @sample-express-app/server
+  installDependency $1 @typed-web-api/express @sample-express-app/server
 
   installDependency $1 @typed-web-api/common @sample-nest-app/common
   installDependency $1 @typed-web-api/client @sample-nest-app/client

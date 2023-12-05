@@ -1,4 +1,4 @@
-import { useServerEndpoints } from '@typed-web-api/express-server';
+import { useServerEndpoints } from '@typed-web-api/express';
 import express from 'express';
 import { fullPathsController } from './full-paths-controller';
 import { partialPathsController } from './partial-paths-controller';

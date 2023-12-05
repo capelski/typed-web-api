@@ -1,5 +1,5 @@
 import { validateCityName, WeatherEndpointResponse } from '@sample-express-app/common';
-import { EndpointResponse } from '@typed-web-api/express-server';
+import { EndpointResponse } from '@typed-web-api/express';
 import { getRandomWeather } from './sample-domain-logic';
 
 export const sampleEndpointCore = (

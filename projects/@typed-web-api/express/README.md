@@ -1,4 +1,4 @@
-# @typed-web-api/express-server
+# @typed-web-api/express
 
 Server library to validate the return type of an express web API's endpoints, based on a type declaration generated via `@typed-web-api/common`. Additionally, it can also be used to infer the types of the Http requests' payload.
 
@@ -34,7 +34,7 @@ app.listen(process.env.PORT || 3000);
 This is how to validate the endpoints' return type by using `useServerEndpoints` (given a `WebApiTypes` types declaration):
 
 ```typescript
-import { ServerEndpoints, useServerEndpoints } from '@typed-web-api/express-server';
+import { ServerEndpoints, useServerEndpoints } from '@typed-web-api/express';
 import express from 'express';
 import { WebApiTypes } from '...';
 
@@ -94,7 +94,7 @@ An object with a list of endpoints exposed successfully (i.e. `exposedEndpoints`
 #### Example
 
 ```typescript
-import { ServerEndpoints, useServerEndpoints } from '@typed-web-api/express-server';
+import { ServerEndpoints, useServerEndpoints } from '@typed-web-api/express';
 import express from 'express';
 import { WebApiTypes } from '...';
 
