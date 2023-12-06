@@ -2,7 +2,7 @@
   "author": "Carles Capellas <capellas.carles@gmail.com>",
   "dependencies": {
     "@sample-nest-app/common": "file:../common",
-    "@typed-web-api/client": "^1.0.0"
+    "@typed-web-api/client": "^1.1.0"
   },
   "description": "Example usage of @typed-web-api/client to consume a NestJS Api",
   "devDependencies": {
