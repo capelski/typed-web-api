@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Weather, WeatherIcons } from '@sample-nest-app/common';
+import { Weather, WeatherIcons } from '@sample-nestjs-app/common';
 
 const randomFloat = (min: number, max: number, decimals = 2) => {
   const randomNumber = Math.random() * (max - min + 1) + min;

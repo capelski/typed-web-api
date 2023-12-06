@@ -1,4 +1,4 @@
-import { validateCityName, WeatherEndpointResponse } from '@sample-nest-app/common';
+import { validateCityName, WeatherEndpointResponse } from '@sample-nestjs-app/common';
 import { TypedResponse } from '@typed-web-api/client';
 import {
   apiJsonBodyButton,

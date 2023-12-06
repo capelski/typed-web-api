@@ -35,15 +35,15 @@ cd projects/@sample-express-app/server
 npm i -S @typed-web-api/express@latest
 cd ../../..
 
-cd projects/@sample-nest-app/common 
+cd projects/@sample-nestjs-app/common 
 npm i -S @typed-web-api/common@latest
 cd ../../..
 
-cd projects/@sample-nest-app/client 
+cd projects/@sample-nestjs-app/client 
 npm i -S @typed-web-api/client@latest
 cd ../../..
 
-cd projects/@sample-nest-app/server 
+cd projects/@sample-nestjs-app/server 
 npm i -S @typed-web-api/nestjs@latest
 cd ../../..
 

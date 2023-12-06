@@ -9,7 +9,7 @@
   },
   "license": "ISC",
   "main": "distribution/index.js",
-  "name": "@sample-nest-app/common",
+  "name": "@sample-nestjs-app/common",
   "private": true,
   "scripts": {
     "build": "npm run clean && tsc -p ./tsconfig.common.json",

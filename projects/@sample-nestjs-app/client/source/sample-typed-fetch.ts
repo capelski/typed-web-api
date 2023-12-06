@@ -1,4 +1,4 @@
-import { WeatherApi } from '@sample-nest-app/common';
+import { WeatherApi } from '@sample-nestjs-app/common';
 import { getTypedFetch } from '@typed-web-api/client';
 
 export const getApiFetchers = (fetchWrapper: Window['fetch']) => {

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "paths": {
       "@typed-web-api/nestjs": ["../../@typed-web-api/nestjs/source"],
-      "@sample-nest-app/common": ["../common/source"]
+      "@sample-nestjs-app/common": ["../common/source"]
     }
   },
   "extends": "./tsconfig.server.json"

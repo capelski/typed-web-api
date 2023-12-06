@@ -1,7 +1,7 @@
 {
   "author": "Carles Capellas <capellas.carles@gmail.com>",
   "dependencies": {
-    "@sample-nest-app/common": "file:../common",
+    "@sample-nestjs-app/common": "file:../common",
     "@typed-web-api/client": "^1.1.0"
   },
   "description": "Example usage of @typed-web-api/client to consume a NestJS Api",
@@ -16,7 +16,7 @@
     "webpack-merge": "^5.10.0"
   },
   "license": "ISC",
-  "name": "@sample-nest-app/client",
+  "name": "@sample-nestjs-app/client",
   "private": true,
   "scripts": {
     "build": "npm run clean && webpack --config webpack/production.config.js",

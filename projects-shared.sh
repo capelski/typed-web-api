@@ -7,9 +7,9 @@ allFiles=(
   "projects/@sample-express-app/client/package.json"
   "projects/@sample-express-app/common/package.json"
   "projects/@sample-express-app/server/package.json"
-  "projects/@sample-nest-app/client/package.json"
-  "projects/@sample-nest-app/common/package.json"
-  "projects/@sample-nest-app/server/package.json"
+  "projects/@sample-nestjs-app/client/package.json"
+  "projects/@sample-nestjs-app/common/package.json"
+  "projects/@sample-nestjs-app/server/package.json"
 );
 
 checkDiff() {
@@ -63,9 +63,9 @@ installDependencies() {
   installDependency $1 @typed-web-api/client @sample-express-app/client
   installDependency $1 @typed-web-api/express @sample-express-app/server
 
-  installDependency $1 @typed-web-api/common @sample-nest-app/common
-  installDependency $1 @typed-web-api/client @sample-nest-app/client
-  installDependency $1 @typed-web-api/nestjs @sample-nest-app/server
+  installDependency $1 @typed-web-api/common @sample-nestjs-app/common
+  installDependency $1 @typed-web-api/client @sample-nestjs-app/client
+  installDependency $1 @typed-web-api/nestjs @sample-nestjs-app/server
 
   echo "Reinstalling dependencies at root folder..."
   if [[ $1 == 'public' ]]; then
