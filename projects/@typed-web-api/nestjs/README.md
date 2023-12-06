@@ -12,19 +12,19 @@ import { Controller, Get, Post } from '@nestjs/common';
 @Controller()
 export class SampleController {
   @Get('/users')
-  getUsers() {
+  async getUsers() {
     /* ... */
     return users;
   }
 
   @Get('users/:userId')
-  getUserById() {
+  async getUserById() {
     /* ... */
     return user;
   }
 
   @Post('/login')
-  login() {
+  async login() {
     /* ... */
     return loginResponse;
   }
@@ -41,19 +41,19 @@ import { WebApiTypes } from '...';
 @Controller()
 export class SampleController implements ServerEndpoints<WebApiTypes> {
   @HttpMethod()
-  '/users_get'() {
+  async '/users_get'() {
     /* ... */
     return users; // Expected return type => User[];
   }
 
   @HttpMethod()
-  '/users/:userId_get'() {
+  async '/users/:userId_get'() {
     /* ... */
     return user; // Expected return type => User;
   }
 
   @HttpMethod()
-  '/login_post'() {
+  async '/login_post'() {
     /* ... */
     return loginResponse; // Expected return type => LoginResponse;
   }

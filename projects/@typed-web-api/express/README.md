@@ -13,17 +13,17 @@ const app = express();
 
 /* ... */
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
   /* ... */
-  res.send(loginResponse);
+  res.status(X).send(loginResponse);
 });
 
-app.get('/users' (req, res) => {
+app.get('/users' async (req, res) => {
   /* ... */
   res.send(users);
 });
 
-app.get('/users/:userId', (req, res) => {
+app.get('/users/:userId', async (req, res) => {
   /* ... */
   res.send(user);
 });
@@ -43,17 +43,17 @@ const app = express();
 /* ... */
 
 const endpoints: ServerEndpoints<WebApiTypes> = {
-  '/login_post': (req, res) => {
+  '/login_post': async (req) => {
     /* ... */
-    return loginResponse; // Expected return type => LoginResponse;
+    return { payload: loginResponse, status: X }; // Expected payload type => LoginResponse;
   },
-  '/users_get': (req, res) => {
+  '/users_get': async (req) => {
     /* ... */
-    return users; // Expected return type => User[]
+    return { payload: users }; // Expected payload type => User[]
   },
-  '/users/:userId_get': (req, res) => {
+  '/users/:userId_get': async (req) => {
     /* ... */
-    return user; // Expected return type => User
+    return { payload: user }; // Expected payload type => User
   },
 };
 
@@ -66,11 +66,11 @@ Optionally the payload of the express request objects can be inferred as well by
 
 ```typescript
 const endpoints: ServerEndpoints<WebApiTypes> = {
-  '/login_post': (req: TypedExpressRequest<WebApiTypes, '/login_post'>) => {
+  '/login_post': async (req: TypedExpressRequest<WebApiTypes, '/login_post'>) => {
     const { email, password } = req.body; // email: string, password: string
     /* ... */
   },
-  '/users_get': (req: TypedExpressRequest<WebApiTypes, '/users_get'>) => {
+  '/users_get': async (req: TypedExpressRequest<WebApiTypes, '/users_get'>) => {
     const { limit, skip } = req.query; // limit: string, skip: string
     /* ... */
   },
@@ -102,13 +102,13 @@ const app = express();
 app.use(express.json());
 
 useServerEndpoints(app, {
-  '/login_post': (req, res) => {
+  '/login_post': (req, res, next) => {
     /* ... */
   },
-  '/users_get': (req, res) => {
+  '/users_get': (req, res, next) => {
     /* ... */
   },
-  '/users/:userId_get': (req, res) => {
+  '/users/:userId_get': (req, res, next) => {
     /* ... */
   },
 });
