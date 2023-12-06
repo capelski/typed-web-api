@@ -1,8 +1,8 @@
 !distribution/
+distribution/samples/
 node_modules/
 source/
-samples/
 tsconfig.*
-*.feature
-*.step.ts
+*.step.js
+*.step.d.ts
 *.tgz

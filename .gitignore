@@ -3,3 +3,4 @@ coverage/*
 !coverage/.gitkeep
 distribution
 node_modules
+*.tgz
