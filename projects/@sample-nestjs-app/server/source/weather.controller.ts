@@ -10,7 +10,8 @@ export class WeatherController implements ServerEndpoints<WeatherEndpoints> {
 
   @HttpMethod()
   '/weather_get'(@Query('cityName') cityName: string) {
-    return sampleEndpointCore(cityName, this.appService);
+    // Asynchronous just for demonstration purposes
+    return Promise.resolve(sampleEndpointCore(cityName, this.appService));
   }
 
   @HttpMethod()

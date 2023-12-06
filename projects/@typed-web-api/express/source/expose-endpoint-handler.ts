@@ -8,8 +8,8 @@ export function exposeEndpointHandler(
   path: string,
   handler: EndpointHandler<any>,
 ) {
-  const wrapper: RequestHandler = (req, res, next) => {
-    const { payload, status } = handler(req, res, next);
+  const wrapper: RequestHandler = async (req, res, next) => {
+    const { payload, status } = await handler(req, res, next);
     if (status) {
       res.status(status);
     }

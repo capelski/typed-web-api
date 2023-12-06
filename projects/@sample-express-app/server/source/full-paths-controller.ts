@@ -4,7 +4,8 @@ import { sampleEndpointCore } from './sample-endpoint-core';
 
 export const fullPathsController: ServerEndpoints<FullPathEndpoints> = {
   '/full-path/weather_get'(req: TypedExpressRequest<FullPathEndpoints, '/full-path/weather_get'>) {
-    return sampleEndpointCore(req.query.cityName);
+    // Asynchronous just for demonstration purposes
+    return Promise.resolve(sampleEndpointCore(req.query.cityName));
   },
 
   '/full-path/weather_post'(
