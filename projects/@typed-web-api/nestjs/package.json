@@ -27,10 +27,10 @@
     "url": "https://github.com/capelski/typed-web-api.git"
   },
   "scripts": {
-    "build": "npm run clean && tsc -p ./tsconfig.server.json",
+    "build": "npm run clean && tsc -p ./tsconfig.nestjs.json",
     "clean": "rm -rf distribution",
     "clean-modules": "rm -rf node_modules",
-    "dev": "tsc -p ./tsconfig.server.json --watch",
+    "dev": "tsc -p ./tsconfig.nestjs.json --watch",
     "prepack": "npm run build",
     "test": "cucumber-js --require-module ts-node/register --require source/**/*.step.ts source/**/*.feature",
     "test-coverage": "rm -rf ../../../coverage/nest; nyc --reporter html npm test; mv coverage ../../../coverage/nest; open -a Google\\ Chrome ../../../coverage/nest/index.html"

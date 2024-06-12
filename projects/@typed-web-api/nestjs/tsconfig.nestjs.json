@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "experimentalDecorators": true,
     "outDir": "./distribution"
   },
   "extends": "../../../tsconfig.base.json",

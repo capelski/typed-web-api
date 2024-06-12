@@ -1,9 +1,3 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "@typed-web-api/express": ["../@typed-web-api/express/source"],
-      "sample-common": ["../sample-common/source"]
-    }
-  },
   "extends": "../../tsconfig.json"
 }

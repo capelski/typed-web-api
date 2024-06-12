@@ -4,5 +4,5 @@
       "@typed-web-api/common": ["../common/source"]
     }
   },
-  "extends": "./tsconfig.server.json"
+  "extends": "./tsconfig.nestjs.json"
 }

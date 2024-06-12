@@ -28,10 +28,10 @@
     "url": "https://github.com/capelski/typed-web-api.git"
   },
   "scripts": {
-    "build": "npm run clean && tsc -p ./tsconfig.server.json",
+    "build": "npm run clean && tsc -p ./tsconfig.express.json",
     "clean": "rm -rf distribution",
     "clean-modules": "rm -rf node_modules",
-    "dev": "tsc -p ./tsconfig.server.json --watch",
+    "dev": "tsc -p ./tsconfig.express.json --watch",
     "prepack": "npm run build",
     "test": "cucumber-js --require-module ts-node/register --require source/**/*.step.ts source/**/*.feature",
     "test-coverage": "rm -rf ../../../coverage/express; nyc --reporter html npm test; mv coverage ../../../coverage/express; open -a Google\\ Chrome ../../../coverage/express/index.html"
