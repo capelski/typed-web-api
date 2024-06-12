@@ -1,7 +1,6 @@
 allFiles=(
   "package-lock.json"
   "projects/@typed-web-api/client/package.json"
-  "projects/@typed-web-api/common/package.json"
   "projects/@typed-web-api/express/package.json"
   "projects/@typed-web-api/nestjs/package.json"
   "projects/sample-client/package.json"
@@ -28,46 +27,36 @@ discardDiff() {
 }
 
 installDependency() {
-  dependencyMode=$1;
-  echo "Installing $2 ($dependencyMode dependency) in $3..."
+  dependencyMode=$1; # "public" or "local"
+  dependencyName=$2;
+  project=$3;
 
+  dependency=''
   if [[ $dependencyMode == 'local' ]]; then
-    npm i -S ./projects/$2 -w $3
+    dependency=./projects/$dependencyName
   else
-    cd ./projects/$3
-    npm i -S $2@latest --workspaces=false
-    rm -rf package-lock.json
-    cd ../../..
+    dependency=$dependencyName@latest
   fi
+
+  echo "Installing $dependency in $project..."
+  npm i -S $dependency -w $project
 }
 
 installDependencies() {
+  dependencyMode=$1; # "public" or "local"
+
   checkDiff
 
   npm run clean-modules;
 
-  if [[ $1 == 'public' ]]; then
-    cd ./projects/@typed-web-api/common
-    npm i --workspaces=false
-    rm -rf package-lock.json
-    cd ../../..
-  fi
+  installDependency $dependencyMode @typed-web-api/common @typed-web-api/client
+  installDependency $dependencyMode @typed-web-api/common @typed-web-api/express
+  installDependency $dependencyMode @typed-web-api/common @typed-web-api/nestjs
 
-  installDependency $1 @typed-web-api/common @typed-web-api/client
-  installDependency $1 @typed-web-api/common @typed-web-api/express
-  installDependency $1 @typed-web-api/common @typed-web-api/nestjs
-
-  installDependency $1 @typed-web-api/common sample-common
-  installDependency $1 @typed-web-api/client sample-client
-  installDependency $1 @typed-web-api/express sample-server-express
-  installDependency $1 @typed-web-api/nestjs sample-server-nestjs
-
-  echo "Reinstalling dependencies at root folder..."
-  if [[ $1 == 'public' ]]; then
-    npm i --workspaces=false
-  else
-    npm i
-  fi
+  installDependency $dependencyMode @typed-web-api/common sample-common
+  installDependency $dependencyMode @typed-web-api/client sample-client
+  installDependency $dependencyMode @typed-web-api/express sample-server-express
+  installDependency $dependencyMode @typed-web-api/nestjs sample-server-nestjs
 
   echo "Discarding generated workspace changes..."
   discardDiff
