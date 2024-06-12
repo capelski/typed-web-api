@@ -5,8 +5,7 @@
       "@typed-web-api/common": ["./projects/@typed-web-api/common/source"],
       "@typed-web-api/express": ["./projects/@typed-web-api/express/source"],
       "@typed-web-api/nestjs": ["./projects/@typed-web-api/nestjs/source"],
-      "@sample-express-app/common": ["./projects/@sample-express-app/common/source"],
-      "@sample-nestjs-app/common": ["./projects/@sample-nestjs-app/common/source"]
+      "sample-common": ["./projects/sample-common/source"]
     }
   },
   "extends": "./tsconfig.base.json"

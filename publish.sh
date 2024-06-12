@@ -23,27 +23,19 @@ npm version patch # patch, minor or major
 npm publish
 cd ../../..
 
-cd projects/@sample-express-app/common 
+cd projects/sample-common 
 npm i -S @typed-web-api/common@latest
 cd ../../..
 
-cd projects/@sample-express-app/client 
+cd projects/sample-client 
 npm i -S @typed-web-api/client@latest
 cd ../../..
 
-cd projects/@sample-express-app/server 
+cd projects/sample-server-express
 npm i -S @typed-web-api/express@latest
 cd ../../..
 
-cd projects/@sample-nestjs-app/common 
-npm i -S @typed-web-api/common@latest
-cd ../../..
-
-cd projects/@sample-nestjs-app/client 
-npm i -S @typed-web-api/client@latest
-cd ../../..
-
-cd projects/@sample-nestjs-app/server 
+cd projects/sample-server-nestjs
 npm i -S @typed-web-api/nestjs@latest
 cd ../../..
 

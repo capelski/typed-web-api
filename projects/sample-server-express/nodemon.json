@@ -1,0 +1,4 @@
+{
+  "watch": ["source/", "../sample-common/source", "../@typed-web-api/express"],
+  "ext": "ts"
+}

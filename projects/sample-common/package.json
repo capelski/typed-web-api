@@ -1,0 +1,23 @@
+{
+  "author": "Carles Capellas <capellas.carles@gmail.com>",
+  "dependencies": {
+    "@typed-web-api/common": "^1.1.1"
+  },
+  "description": "Example usage of @typed-web-api/common",
+  "devDependencies": {
+    "typescript": "^5.3.2"
+  },
+  "license": "ISC",
+  "main": "distribution/index.js",
+  "name": "sample-common",
+  "private": true,
+  "scripts": {
+    "build": "npm run clean && tsc -p ./tsconfig.common.json",
+    "build:check": "tsc -p ./tsconfig.common.json --noEmit",
+    "clean": "rm -rf distribution",
+    "clean-modules": "rm -rf node_modules",
+    "dev": "tsc -p ./tsconfig.common.json --watch"
+  },
+  "types": "distribution/index.d.ts",
+  "version": "1.0.0"
+}

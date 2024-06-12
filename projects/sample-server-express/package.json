@@ -1,0 +1,23 @@
+{
+  "author": "Carles Capellas <capellas.carles@gmail.com>",
+  "dependencies": {
+    "@typed-web-api/express": "^1.1.1",
+    "express": "^4.18.2"
+  },
+  "description": "Example usage of @typed-web-api/express",
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "typescript": "^5.3.2"
+  },
+  "license": "ISC",
+  "name": "sample-server-express",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p ./tsconfig.server.json",
+    "build:check": "tsc -p ./tsconfig.server.json --noEmit",
+    "clean": "rm -rf distribution",
+    "clean-modules": "rm -rf node_modules",
+    "dev": "nodemon source/sample-server.ts"
+  },
+  "version": "1.0.0"
+}
