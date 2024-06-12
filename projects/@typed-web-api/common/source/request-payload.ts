@@ -4,8 +4,6 @@ export type JsonBody<TJsonBody extends {}> = {
   jsonBody: TJsonBody;
 };
 
-// TODO Validate that the params are actually contained in the URL?
-
 export type UrlParams<TParams extends Dictionary<string>> = {
   urlParams: TParams;
 };

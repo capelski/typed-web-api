@@ -1,6 +1,6 @@
 import { BadRequestException, Body, Controller, Param, Query } from '@nestjs/common';
 import { HttpMethod, ServerEndpoints } from '@typed-web-api/nestjs';
-import { validateCityName, WeatherV3Endpoints } from 'sample-common';
+import { validateCityName, WeatherV3EndpointInput, WeatherV3Endpoints } from 'sample-common';
 import { AppService } from './app.service';
 
 /** Different implementation of WeatherEndpoints (breaking changes) exposed at a different URL */
@@ -10,7 +10,7 @@ export class WeatherV3Controller implements ServerEndpoints<WeatherV3Endpoints> 
   constructor(private readonly appService: AppService) {}
 
   @HttpMethod()
-  '/v3/weather_get'(@Query('city_name') city_name: string) {
+  '/v3/weather_get'(@Query() { city_name }: WeatherV3EndpointInput) {
     const cityNameValidation = validateCityName(city_name);
 
     if (!cityNameValidation.valid) {
@@ -22,7 +22,7 @@ export class WeatherV3Controller implements ServerEndpoints<WeatherV3Endpoints> 
   }
 
   @HttpMethod()
-  '/v3/weather_post'(@Body('city_name') city_name: string) {
+  '/v3/weather_post'(@Body() { city_name }: WeatherV3EndpointInput) {
     const cityNameValidation = validateCityName(city_name);
 
     if (!cityNameValidation.valid) {
@@ -33,7 +33,7 @@ export class WeatherV3Controller implements ServerEndpoints<WeatherV3Endpoints> 
   }
 
   @HttpMethod()
-  '/v3/weather/:city_name_get'(@Param('city_name') city_name: string) {
+  '/v3/weather/:city_name_get'(@Param() { city_name }: WeatherV3EndpointInput) {
     const cityNameValidation = validateCityName(city_name);
 
     if (!cityNameValidation.valid) {

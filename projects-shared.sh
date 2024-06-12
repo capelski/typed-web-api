@@ -58,6 +58,8 @@ installDependencies() {
   installDependency $dependencyMode @typed-web-api/express sample-server-express
   installDependency $dependencyMode @typed-web-api/nestjs sample-server-nestjs
 
+  npm ci
+
   echo "Discarding generated workspace changes..."
   discardDiff
 }

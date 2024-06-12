@@ -1,6 +1,6 @@
 import { BadRequestException, Body, Controller, Param, Query } from '@nestjs/common';
 import { HttpMethod, ServerEndpoints } from '@typed-web-api/nestjs';
-import { validateCityName, WeatherEndpoints } from 'sample-common';
+import { validateCityName, WeatherEndpointInput, WeatherEndpoints } from 'sample-common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -8,7 +8,7 @@ export class WeatherController implements ServerEndpoints<WeatherEndpoints> {
   constructor(private readonly appService: AppService) {}
 
   @HttpMethod()
-  '/weather_get'(@Query('cityName') cityName: string) {
+  '/weather_get'(@Query() { cityName }: WeatherEndpointInput) {
     const cityNameValidation = validateCityName(cityName);
 
     if (!cityNameValidation.valid) {
@@ -20,7 +20,7 @@ export class WeatherController implements ServerEndpoints<WeatherEndpoints> {
   }
 
   @HttpMethod()
-  '/weather_post'(@Body('cityName') cityName: string) {
+  '/weather_post'(@Body() { cityName }: WeatherEndpointInput) {
     const cityNameValidation = validateCityName(cityName);
 
     if (!cityNameValidation.valid) {
@@ -31,7 +31,7 @@ export class WeatherController implements ServerEndpoints<WeatherEndpoints> {
   }
 
   @HttpMethod()
-  '/weather/:cityName_get'(@Param('cityName') cityName: string) {
+  '/weather/:cityName_get'(@Param() { cityName }: WeatherEndpointInput) {
     const cityNameValidation = validateCityName(cityName);
 
     if (!cityNameValidation.valid) {

@@ -10,23 +10,25 @@ export type WeatherEndpointResponse =
   | Weather;
 
 export type WeatherEndpoints = {
-  '/weather_get': EndpointDefinition<WeatherEndpointResponse, QueryString<{ cityName: string }>>;
-  '/weather_post': EndpointDefinition<WeatherEndpointResponse, JsonBody<{ cityName: string }>>;
+  '/weather_get': EndpointDefinition<WeatherEndpointResponse, QueryString<WeatherEndpointInput>>;
+  '/weather_post': EndpointDefinition<WeatherEndpointResponse, JsonBody<WeatherEndpointInput>>;
   '/weather/:cityName_get': EndpointDefinition<
     WeatherEndpointResponse,
-    UrlParams<{ cityName: string }>
+    UrlParams<WeatherEndpointInput>
   >;
 };
+
+export type WeatherV3EndpointInput = { city_name: string };
 
 export type WeatherV3Endpoints = {
   '/v3/weather_get': EndpointDefinition<
     WeatherEndpointResponse,
-    QueryString<{ city_name: string }>
+    QueryString<WeatherV3EndpointInput>
   >;
-  '/v3/weather_post': EndpointDefinition<WeatherEndpointResponse, JsonBody<{ city_name: string }>>;
+  '/v3/weather_post': EndpointDefinition<WeatherEndpointResponse, JsonBody<WeatherV3EndpointInput>>;
   '/v3/weather/:city_name_get': EndpointDefinition<
     WeatherEndpointResponse,
-    UrlParams<{ city_name: string }>
+    UrlParams<WeatherV3EndpointInput>
   >;
 };
 
