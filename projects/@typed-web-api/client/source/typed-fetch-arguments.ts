@@ -5,8 +5,10 @@ import {
   JsonBody_UrlParams,
   JsonBody_UrlParams_QueryString,
   QueryString,
+  QueryStringBase,
   UrlParams,
   UrlParams_QueryString,
+  UrlParamsBase,
 } from '@typed-web-api/common';
 
 export type NoMethodRequestInit = Omit<RequestInit, 'method'>;
@@ -22,6 +24,8 @@ export type TypedFetchArguments<
   ? [
       path: TEndpointName,
       options: {
+        /** When using jsonBody the payload will be stringified via JSON.stringify and a
+         * 'Content-Type': 'application/json' header will be added to the request */
         jsonBody: TJsonBody;
         init?: NoMethodRequestInit;
         queryString: TQueryString;
@@ -33,6 +37,8 @@ export type TypedFetchArguments<
     ? [
         path: TEndpointName,
         options: {
+          /** When using jsonBody the payload will be stringified via JSON.stringify and a
+           * 'Content-Type': 'application/json' header will be added to the request */
           jsonBody: TJsonBody;
           init?: NoMethodRequestInit;
           urlParams: TUrlParams;
@@ -46,6 +52,8 @@ export type TypedFetchArguments<
       ? [
           path: TEndpointName,
           options: {
+            /** When using jsonBody the payload will be stringified via JSON.stringify and a
+             * 'Content-Type': 'application/json' header will be added to the request */
             jsonBody: TJsonBody;
             init?: NoMethodRequestInit;
             queryString: TQueryString;
@@ -69,6 +77,8 @@ export type TypedFetchArguments<
           ? [
               path: TEndpointName,
               options: {
+                /** When using jsonBody the payload will be stringified via JSON.stringify and a
+                 * 'Content-Type': 'application/json' header will be added to the request */
                 jsonBody: TJsonBody;
                 init?: NoMethodRequestInit;
                 urlPrefix?: string;
@@ -96,6 +106,8 @@ export type TypedFetchArguments<
                   path: TEndpointName,
                   options?: {
                     init?: NoMethodRequestInit;
+                    queryString?: QueryStringBase;
+                    urlParams?: UrlParamsBase;
                     urlPrefix?: string;
                   },
                 ];

@@ -18,18 +18,11 @@ export type WeatherEndpoints = {
   >;
 };
 
-export type WeatherV3EndpointInput = { city_name: string };
-
+// Deliberately untyped request payloads for demonstration purposes
 export type WeatherV3Endpoints = {
-  '/v3/weather_get': EndpointDefinition<
-    WeatherEndpointResponse,
-    QueryString<WeatherV3EndpointInput>
-  >;
-  '/v3/weather_post': EndpointDefinition<WeatherEndpointResponse, JsonBody<WeatherV3EndpointInput>>;
-  '/v3/weather/:city_name_get': EndpointDefinition<
-    WeatherEndpointResponse,
-    UrlParams<WeatherV3EndpointInput>
-  >;
+  '/v3/weather_get': EndpointDefinition<WeatherEndpointResponse>;
+  '/v3/weather_post': EndpointDefinition<WeatherEndpointResponse>;
+  '/v3/weather/:city_name_get': EndpointDefinition<WeatherEndpointResponse>;
 };
 
 export type WeatherApi = WeatherEndpoints & WeatherV3Endpoints;

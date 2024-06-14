@@ -1,9 +1,9 @@
-import { Dictionary } from '@typed-web-api/common';
+import { QueryStringBase, UrlParamsBase } from '@typed-web-api/common';
 
 export type BuildUrlOptions = {
   baseUrl?: string;
-  queryString?: Dictionary<string>;
-  urlParams?: Dictionary<string>;
+  queryString?: QueryStringBase;
+  urlParams?: UrlParamsBase;
   urlPrefix?: string;
 };
 
