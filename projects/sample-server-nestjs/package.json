@@ -4,7 +4,7 @@
     "@nestjs/common": "^10.2.10",
     "@nestjs/core": "^10.2.10",
     "@nestjs/platform-express": "^10.2.10",
-    "@typed-web-api/nestjs": "^1.1.1",
+    "@typed-web-api/nestjs": "^1.1.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "sample-common": "file:../sample-common"
