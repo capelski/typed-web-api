@@ -7,55 +7,55 @@ Server library to validate the return type of a NestJS web API's endpoints, base
 Given the following sample NestJS controller:
 
 ```typescript
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 
-@Controller()
-export class SampleController {
-  @Get('/users')
-  async getUsers() {
+@Controller('/users')
+export class UsersController {
+  @Post('/login')
+  async login(@Body() body: { email: string; password: string }) {
+    /* ... */
+    return loginResponse;
+  }
+
+  @Get('/')
+  async getUsers(@Query() query: { limit?: string; skip?: string }) {
     /* ... */
     return users;
   }
 
-  @Get('users/:userId')
-  async getUserById() {
+  @Get('/:userId')
+  async getUserById(@Param('userId') userId: string) {
     /* ... */
     return user;
-  }
-
-  @Post('/login')
-  async login() {
-    /* ... */
-    return loginResponse;
   }
 }
 ```
 
-This is how to validate the endpoints' return type by using `ServerEndpoints` (given a `WebApiTypes` types declaration) and `HttpMethod`:
+This is how to validate the endpoints' return type by using `HttpMethod` and `ServerEndpoints` (given the sample `UserEndpoints` type described in [@typed-web-api/common](https://www.npmjs.com/package/@typed-web-api/common)):
 
 ```typescript
-import { Controller } from '@nestjs/common';
+import { Body, Controller, Param, Query } from '@nestjs/common';
 import { HttpMethod, ServerEndpoints } from '@typed-web-api/nestjs';
-import { WebApiTypes } from '...';
+import { UserEndpoints } from '...';
 
 @Controller()
-export class SampleController implements ServerEndpoints<WebApiTypes> {
+export class UsersController implements ServerEndpoints<UserEndpoints> {
   @HttpMethod()
-  async '/users_get'() {
+  async '/users/login_post'(@Body() body: { email: string; password: string }) {
+    /* ... */
+    return loginResponse; // Expected return type => LoginResponse;
+  }
+
+  @HttpMethod()
+  async '/users_get'(@Query() query: { limit?: string; skip?: string }) {
     /* ... */
     return users; // Expected return type => User[];
   }
 
   @HttpMethod()
-  async '/users/:userId_get'() {
+  async '/users/:userId_get'(@Param('userId') userId: string) {
     /* ... */
     return user; // Expected return type => User;
-  }
-
-  @HttpMethod()
-  async '/login_post'() {
-    /* ... */
-    return loginResponse; // Expected return type => LoginResponse;
   }
 }
 ```

@@ -13,7 +13,7 @@ const app = express();
 
 /* ... */
 
-app.post('/login', async (req, res) => {
+app.post('/users/login', async (req, res) => {
   /* ... */
   res.status(X).send(loginResponse);
 });
@@ -31,19 +31,19 @@ app.get('/users/:userId', async (req, res) => {
 app.listen(process.env.PORT || 3000);
 ```
 
-This is how to validate the endpoints' return type by using `useServerEndpoints` (given a `WebApiTypes` types declaration):
+This is how to validate the endpoints' return type by using `useServerEndpoints` (given the sample `UserEndpoints` type described in [@typed-web-api/common](https://www.npmjs.com/package/@typed-web-api/common)):
 
 ```typescript
 import { ServerEndpoints, useServerEndpoints } from '@typed-web-api/express';
 import express from 'express';
-import { WebApiTypes } from '...';
+import { UserEndpoints } from '...';
 
 const app = express();
 
 /* ... */
 
-const endpoints: ServerEndpoints<WebApiTypes> = {
-  '/login_post': async (req) => {
+const usersController: ServerEndpoints<UserEndpoints> = {
+  '/users/login_post': async (req) => {
     /* ... */
     return { payload: loginResponse, status: X }; // Expected payload type => LoginResponse;
   },
@@ -57,7 +57,7 @@ const endpoints: ServerEndpoints<WebApiTypes> = {
   },
 };
 
-useServerEndpoints(app, endpoints);
+useServerEndpoints(app, usersController);
 
 app.listen(process.env.PORT || 3000);
 ```
@@ -65,16 +65,20 @@ app.listen(process.env.PORT || 3000);
 Optionally the payload of the express request objects can be inferred as well by using additional helper types:
 
 ```typescript
-const endpoints: ServerEndpoints<WebApiTypes> = {
-  '/login_post': async (req: TypedExpressRequest<WebApiTypes, '/login_post'>) => {
+const usersController: ServerEndpoints<UserEndpoints> = {
+  '/users/login_post': async (req: TypedExpressRequest<UserEndpoints, '/users/login_post'>) => {
     const { email, password } = req.body; // email: string, password: string
     /* ... */
   },
-  '/users_get': async (req: TypedExpressRequest<WebApiTypes, '/users_get'>) => {
+  '/users_get': async (req: TypedExpressRequest<UserEndpoints, '/users_get'>) => {
     const { limit, skip } = req.query; // limit: string, skip: string
     /* ... */
   },
-  /* ... */
+  '/users/:userId_get': async (req: TypedExpressRequest<UserEndpoints, '/users/:userId_get'>) => {
+    const { userId } = req.params; // userId: string
+    /* ... */
+    return { payload: user }; // Expected payload type => User
+  },
 };
 ```
 
@@ -96,13 +100,13 @@ An object with a list of endpoints exposed successfully (i.e. `exposedEndpoints`
 ```typescript
 import { ServerEndpoints, useServerEndpoints } from '@typed-web-api/express';
 import express from 'express';
-import { WebApiTypes } from '...';
+import { WebApiEndpoints } from '...';
 
 const app = express();
 app.use(express.json());
 
-useServerEndpoints(app, {
-  '/login_post': (req, res, next) => {
+useServerEndpoints(app, <WebApiEndpoints>{
+  '/users/login_post': (req, res, next) => {
     /* ... */
   },
   '/users_get': (req, res, next) => {

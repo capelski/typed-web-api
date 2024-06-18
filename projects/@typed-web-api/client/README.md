@@ -13,13 +13,13 @@ const response = await fetch(`/users`, { method: 'get' });
 const users = await response.json(); // Inferred type => any
 ```
 
-This is how to get typed response payloads by using `typedFetch` (given a `WebApiTypes` types declaration):
+This is how to get typed response payloads by using `typedFetch` (given the sample `WebApiEndpoints` type described in [@typed-web-api/common](https://www.npmjs.com/package/@typed-web-api/common)):
 
 ```typescript
 import { getTypedFetch } from '@typed-web-api/client';
-import { WebApiTypes } from '...';
+import { WebApiEndpoints } from '...';
 
-const typedFetch = getTypedFetch<WebApiTypes>();
+const typedFetch = getTypedFetch<WebApiEndpoints>();
 
 /* ... */
 
@@ -85,7 +85,9 @@ A promise of an Http response, with a `.json()` method typed according to the `T
 const users = await typedFetch('/users_get');
 const usersPage = await typedFetch('/users_get', { queryString: { limit: '30', skip: '30' } });
 
-const loginResponse = await typedFetch('/login_post', { jsonBody: { email: '', password: '' } });
+const loginResponse = await typedFetch('/users/login_post', {
+  jsonBody: { email: '...', password: '...' },
+});
 
 const user = await typedFetch('/users/:userId_get', { urlParams: { userId: 'xyz' } });
 ```
